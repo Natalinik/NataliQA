@@ -24,3 +24,15 @@ def test_repo_cannot_be_found(github_api):
 def test_repo_with_single_char_be_found(github_api):
     result_of_search_s = github_api.search_repo("s")
     assert result_of_search_s["total_count"] != 0
+
+@pytest.mark.api
+def test_list_releases_found(github_api):
+    releases = github_api.list_releases("Natalinik", "NataliQA")
+    assert len(releases) >= 1
+    assert releases[0]["tag_name"] == "1.0.0"
+    assert releases[0]["author"]["login"] == "Natalinik"
+
+@pytest.mark.api
+def test_list_releases_not_found(github_api):
+    releases = github_api.list_releases("Natalinik", "QA")
+    assert releases["status"] == "404"
