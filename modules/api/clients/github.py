@@ -15,3 +15,10 @@ class GitHub:
         body = response.json()
 
         return body
+    
+    def list_releases(self, owner, repository):
+        address = f"https://api.github.com/repos/{owner}/{repository}/releases"
+        response = requests.get(address)
+        body = response.json()
+
+        return body
