@@ -36,3 +36,15 @@ def test_list_releases_found(github_api):
 def test_list_releases_not_found(github_api):
     releases = github_api.list_releases("Natalinik", "QA")
     assert releases["status"] == "404"
+
+@pytest.mark.api
+def test_list_commits_on_pr(github_api):
+    commits = github_api.list_commits_on_pull_request("Natalinik", "NataliQA", 1)
+    assert commits[0]["sha"] == "31ba51d3cbc2416bff865262d53b1580c725cf17"
+    assert commits[0]["commit"]["author"]["name"] == "Nataliia Platonova"
+    
+@pytest.mark.api
+def test_list_commits_on_pr_not_found(github_api):
+    commits = github_api.list_commits_on_pull_request("Natalinik", "NataliQA", "Bad_pr_number")
+    assert commits["message"] == "Not Found"
+    assert commits["status"] == "404"

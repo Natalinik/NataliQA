@@ -22,3 +22,10 @@ class GitHub:
         body = response.json()
 
         return body
+    
+    def list_commits_on_pull_request(self, owner, repository, pull_number):
+        address = f"https://api.github.com/repos/{owner}/{repository}/pulls/{pull_number}/commits"
+        response = requests.get(address)
+        body = response.json()
+
+        return body
