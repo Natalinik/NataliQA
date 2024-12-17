@@ -67,3 +67,61 @@ def test_detailed_orders():
     assert orders[0][1] == "Sergii"
     assert orders[0][2] == "солодка вода"
     assert orders[0][3] == "з цукром"
+
+
+@pytest.mark.database
+def test_tables_list():
+    db = Database()
+    tables = db.get_tables()
+
+    assert len(tables) == 3
+    assert ('customers',) in tables
+    assert ('products',) in tables
+    assert ('orders',) in tables
+
+
+@pytest.mark.database
+def test_user_insert():
+    db = Database()
+    db.insert_user(3, 'Natali', 'Mykoly Lysenka str, 3', 'Kyiv', '01030', 'Ukraine')
+    person = db.select_user_by_id(3)
+
+    assert person[0] == 3
+    assert person[4] == '01030'
+
+
+@pytest.mark.database
+def test_user_name_update():
+    db = Database()
+    db.insert_user(4, 'Jana', '5th Ave, 754', 'New York', '10019', 'USA')
+    db.update_user_name_by_id(4, 'Sara')
+    person = db.select_user_by_id(4)
+    
+    assert person[1] == 'Sara'
+
+
+@pytest.mark.database
+def test_user_delete():
+    db = Database()
+    db.insert_user(99, 'Abc', 'Def, 11', 'Krk', '9999', '?')
+    db.delete_user_by_id(99)
+    person = db.select_user_by_id(99)
+    
+    assert person == None
+
+
+@pytest.mark.database
+def test_check_user_postCode_3127():
+    db = Database()
+    user = db.get_user_addresses_by_postalCode(3127)
+    print(user)
+   
+    assert user[0][2] == "3127"
+
+
+@pytest.mark.database
+def test_check_user_not_found():
+    db = Database()
+    user = db.select_user_by_id(0)
+    
+    assert user == None
