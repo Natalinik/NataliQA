@@ -13,7 +13,7 @@ class SignInPage(BasePage):
 
     def try_login(self, username, password):
         # We find the field in which we will enter the incorrect username or email address
-        login_elem = self.driver.find_element("id", "login_field")
+        login_elem = self.driver.find_element(By.ID, "login_field")
 
         # Entering an incorrect username or email address
         login_elem.send_keys(username)
