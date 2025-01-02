@@ -1,4 +1,5 @@
 import pytest
+
 from modules.common.database import Database
 
 

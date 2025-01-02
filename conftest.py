@@ -1,5 +1,9 @@
 import pytest
+
 from modules.api.clients.github import GitHub
+from modules.ui.page_objects.makeup_main_page import MakeupMainPage
+from modules.ui.page_objects.sign_in_page import SignInPage
+
 
 class User:
 
@@ -31,3 +35,26 @@ def github_api():
     github = GitHub()
 
     yield github
+
+
+@pytest.fixture
+def makeup_main_page():
+    main_page = MakeupMainPage()
+    main_page.open()
+
+    yield main_page
+
+    main_page.close()
+
+
+@pytest.fixture
+def github_sign_in_page():
+    # Creating a page object
+    sign_in_page = SignInPage()
+    # Open the page https://github.com/login
+    sign_in_page.open()
+
+    yield sign_in_page
+
+    # Close the browser
+    sign_in_page.close()

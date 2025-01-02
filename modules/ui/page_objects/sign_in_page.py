@@ -1,5 +1,6 @@
-from modules.ui.page_objects.base_page import BasePage
 from selenium.webdriver.common.by  import By
+
+from modules.ui.page_objects.base_page import BasePage
 
 
 class SignInPage(BasePage):
@@ -32,4 +33,3 @@ class SignInPage(BasePage):
 
     def check_title(self, expected_title):
         return self.driver.title == expected_title
- 
