@@ -1,6 +1,6 @@
 import pytest
 
-from modules.ui.page_objects.sign_in_page import SignInPage
+from modules.ui.page_objects.github.sign_in_page import SignInPage
 
 
 @pytest.mark.ui

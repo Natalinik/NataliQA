@@ -1,8 +1,8 @@
 import pytest
 
 from modules.api.clients.github import GitHub
-from modules.ui.page_objects.makeup_main_page import MakeupMainPage
-from modules.ui.page_objects.sign_in_page import SignInPage
+from modules.ui.page_objects.makeup.makeup_main_page import MakeupMainPage
+from modules.ui.page_objects.github.sign_in_page import SignInPage
 
 
 class User:

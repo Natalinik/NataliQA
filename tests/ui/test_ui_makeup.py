@@ -1,6 +1,6 @@
 import pytest
 
-from modules.ui.page_objects.makeup_main_page import MakeupMainPage
+from modules.ui.page_objects.makeup.makeup_main_page import MakeupMainPage
 
 
 @pytest.mark.ui
