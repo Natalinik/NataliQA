@@ -28,7 +28,7 @@ class MakeupMainPage(BasePage):
 
         return MakeupProductPage(self.driver)
 
-    def check_basket_products_counter(self, expected_products_number):
+    def get_basket_products_counter(self) -> str:
         basket_counter = self.driver.find_element(By.CSS_SELECTOR, MakeupMainPage.BASKET_COUNTER_SELECTOR)
         
-        return int(basket_counter.text) == expected_products_number
+        return basket_counter.text
