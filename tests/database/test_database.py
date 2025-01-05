@@ -4,22 +4,19 @@ from modules.common.database import Database
 
 
 @pytest.mark.database
-def test_database_connection():
-    db = Database()
+def test_database_connection(db):
     db.test_connection()
 
 
 @pytest.mark.database
-def test_check_all_users():
-    db = Database()
+def test_check_all_users(db):
     users = db.get_all_users()
 
     print(users)
 
 
 @pytest.mark.database
-def test_check_user_sergii():
-    db = Database()
+def test_check_user_sergii(db):
     user = db.get_user_address_by_name('Sergii')
 
     assert user[0][0] == "Maydan Nezalezhnosti 1"
@@ -29,8 +26,7 @@ def test_check_user_sergii():
 
 
 @pytest.mark.database
-def test_product_qnt_update():
-    db = Database()
+def test_product_qnt_update(db):
     db.update_product_qnt_by_id(1, 25)
     water_qnt = db.select_product_qnt_by_id(1)
 
@@ -38,8 +34,7 @@ def test_product_qnt_update():
 
 
 @pytest.mark.database
-def test_product_insert():
-    db = Database()
+def test_product_insert(db):
     db.insert_product(4, 'печиво', 'солодке', 30)
     water_qnt = db.select_product_qnt_by_id(4)
 
@@ -47,8 +42,7 @@ def test_product_insert():
 
 
 @pytest.mark.database
-def test_product_delete():
-    db = Database()
+def test_product_delete(db):
     db.insert_product(99, 'тестові', 'дані', 999)
     db.delete_product_by_id(99)
     qnt = db.select_product_qnt_by_id(99)
@@ -57,8 +51,7 @@ def test_product_delete():
 
 
 @pytest.mark.database
-def test_detailed_orders():
-    db = Database()
+def test_detailed_orders(db):
     orders = db.get_detailed_orders()
     print("Замовлення", orders)
 
@@ -71,8 +64,7 @@ def test_detailed_orders():
 
 
 @pytest.mark.database
-def test_tables_list():
-    db = Database()
+def test_tables_list(db):
     tables = db.get_tables()
 
     assert len(tables) == 3
@@ -82,8 +74,7 @@ def test_tables_list():
 
 
 @pytest.mark.database
-def test_user_insert():
-    db = Database()
+def test_user_insert(db):
     db.insert_user(3, 'Natali', 'Mykoly Lysenka str, 3', 'Kyiv', '01030', 'Ukraine')
     person = db.select_user_by_id(3)
 
@@ -92,8 +83,7 @@ def test_user_insert():
 
 
 @pytest.mark.database
-def test_user_name_update():
-    db = Database()
+def test_user_name_update(db):
     db.insert_user(4, 'Jana', '5th Ave, 754', 'New York', '10019', 'USA')
     db.update_user_name_by_id(4, 'Sara')
     person = db.select_user_by_id(4)
@@ -102,8 +92,7 @@ def test_user_name_update():
 
 
 @pytest.mark.database
-def test_user_delete():
-    db = Database()
+def test_user_delete(db):
     db.insert_user(99, 'Abc', 'Def, 11', 'Krk', '9999', '?')
     db.delete_user_by_id(99)
     person = db.select_user_by_id(99)
@@ -112,8 +101,7 @@ def test_user_delete():
 
 
 @pytest.mark.database
-def test_check_user_postCode_3127():
-    db = Database()
+def test_check_user_postCode_3127(db):
     user = db.get_user_addresses_by_postalCode(3127)
     print(user)
    
@@ -121,8 +109,7 @@ def test_check_user_postCode_3127():
 
 
 @pytest.mark.database
-def test_check_user_not_found():
-    db = Database()
+def test_check_user_not_found(db):
     user = db.select_user_by_id(0)
     
     assert user == None

@@ -1,5 +1,6 @@
 import pytest
 
+from modules.common.database import Database
 from modules.api.clients.github import GitHub
 from modules.ui.page_objects.makeup.makeup_main_page import MakeupMainPage
 from modules.ui.page_objects.github.sign_in_page import SignInPage
@@ -29,6 +30,13 @@ def user():
     yield user
 
     user.remove()
+
+
+@pytest.fixture
+def db():
+    db = Database()
+
+    yield db
 
 
 @pytest.fixture
@@ -72,4 +80,3 @@ def auto_ria_fuel_price_page():
 
     # Close the browser
     fuel_price_page.close()
-    
