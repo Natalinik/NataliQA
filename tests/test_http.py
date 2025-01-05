@@ -21,4 +21,5 @@ def test_second_request():
 @pytest.mark.http
 def test_status_code_request():
     response = requests.get("https://api.github.com/users/sergii_butenko")
+    
     assert response.status_code == 404

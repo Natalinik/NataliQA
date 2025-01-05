@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by  import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.remote.webdriver import WebDriver
 
 from modules.ui.page_objects.base_page import BasePage
 from modules.ui.page_objects.makeup.makeup_product_page import MakeupProductPage
@@ -11,7 +12,7 @@ class MakeupMainPage(BasePage):
     PRODUCT_LINK_SELECTOR = "a.simple-slider-list__image"
     BASKET_COUNTER_SELECTOR = ".header-basket .header-counter"
 
-    def __init__(self, driver = None) -> None:
+    def __init__(self, driver: WebDriver = None) -> None:
         super().__init__(driver)
 
     def open(self):

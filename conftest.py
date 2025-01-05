@@ -3,6 +3,7 @@ import pytest
 from modules.api.clients.github import GitHub
 from modules.ui.page_objects.makeup.makeup_main_page import MakeupMainPage
 from modules.ui.page_objects.github.sign_in_page import SignInPage
+from modules.ui.page_objects.auto_ria.auto_ria_fuel_price_page import AutoRiaFuelPricePage
 
 
 class User:
@@ -58,3 +59,17 @@ def github_sign_in_page():
 
     # Close the browser
     sign_in_page.close()
+
+
+@pytest.fixture
+def auto_ria_fuel_price_page():
+    # Creating a page object
+    fuel_price_page = AutoRiaFuelPricePage()
+    # Open the page https://auto.ria.com/uk/toplivo/
+    fuel_price_page.open()
+
+    yield fuel_price_page
+
+    # Close the browser
+    fuel_price_page.close()
+    

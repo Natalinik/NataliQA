@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by  import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.remote.webdriver import WebDriver
 
 from modules.ui.page_objects.base_page import BasePage
 
@@ -10,7 +11,7 @@ class MakeupProductPage(BasePage):
     CLOSE_ICON_SELECTOR = ".popup__window .popup-close.close-icon"
     LOGO_CLASS = "logo"
 
-    def __init__(self, driver):
+    def __init__(self, driver: WebDriver):
         super().__init__(driver)
 
     def buy_product(self):
