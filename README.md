@@ -14,8 +14,8 @@ This project contains automated tests for various websites and APIs, including G
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Natalinik/NataliQA.git
-    cd NataliQA
+    git clone https://github.com/Natalinik/PrometheusQAAutoLearningProject.git
+    cd PrometheusQAAutoLearningProject
     ```
 2. Install the required packages:
     ```sh
